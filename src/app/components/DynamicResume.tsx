@@ -610,39 +610,56 @@ const DynamicResume = (): JSX.Element => {
                     {data.addressInp}
                   </p>
                 </div>
+
+
                 <div className="flex items-center w-full">
-                  <div className="w-10 h-10 flex justify-center items-center p-2 rounded-full bg-purple-700">
+                  <div
+                    className="w-10 h-10 flex justify-center items-center p-2 rounded-full bg-purple_col"
+                  >
                     <FaLinkedinIn />
                   </div>
-                  <p className="text-xs sm:text-sm ml-2 flex-1 break-words">
-                    <a
-                      className="underline text-blue-400"
-                      href={data.linkedInInp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {data.linkedInInp}
-                    </a>
+                  <p className="text-xs sm:text-sm ml-2 flex-1 w-full overflow-hidden">
+                    <p>
+                      <a
+                        className="underline text-blue-400 break-words"
+                        href={data.linkedInInp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {data.linkedInInp}
+                      </a>
+                    </p>
                   </p>
                 </div>
                 {data.portfolioInp && (
                   <div className="flex items-center w-full">
-                    <div className="w-10 h-10 flex justify-center items-center p-2 rounded-full bg-purple-700">
+                    <div
+                      className="w-10 h-10 flex bg-purple_col justify-center items-center p-2 rounded-full "
+                    >
                       <RiProjectorFill />
                     </div>
-                    <p className="text-xs sm:text-sm ml-2 flex-1 break-words">
-                      <a
-                        className="underline text-blue-400"
-                        href={data.portfolioInp}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {data.portfolioInp}
-                      </a>
+                    <p className="text-xs sm:text-sm ml-2 flex-1 w-full overflow-hidden">
+                      <p>
+                        <a
+                          className="underline text-blue-400 break-words"
+                          href={data.portfolioInp}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {data.portfolioInp}
+                        </a>
+                      </p>
                     </p>
                   </div>
                 )}
+
+
+
+
+
+
               </div>
+              
               <h2 className="text-lg sm:text-xl mt-6 font-bold text-white  mb-4">
                 Language
               </h2>
