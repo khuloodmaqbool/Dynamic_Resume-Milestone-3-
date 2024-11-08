@@ -62,7 +62,17 @@ const DynamicResume = (): JSX.Element => {
   };
 
   const handleSubmit = () => {
-    setProjectsData((prev) => [...prev, projectsInp]);
+    if (
+      !experienceInp.roleInp ||
+      !experienceInp.instituteInp ||
+      !experienceInp.startYearInp ||
+      !experienceInp.endYearInp ||
+      !experienceInp.descriptionInp
+    ) {
+      alert("Fill All Fields");
+      return;
+    }
+
     setExperienceData((prev) => [...prev, experienceInp]);
     setExperienceInp({
       roleInp: "",
@@ -74,6 +84,14 @@ const DynamicResume = (): JSX.Element => {
   };
 
   const handleProjectSubmit = () => {
+    if (
+      !projectsInp.titleInp ||
+      !projectsInp.technologiesInp ||
+      !projectsInp.featuresInp
+    ) {
+      alert("Fill All Fields");
+      return;
+    }
     setProjectsData((prev) => [...prev, projectsInp]);
     setProjectsInp({
       titleInp: "",
@@ -544,10 +562,10 @@ const DynamicResume = (): JSX.Element => {
             className="resumediv mt-8 flex flex-col-reverse  lg:flex-row flex-wrap md:flex-row flex-wrap  justify-center rounded-lg border-2 mx-auto w-full max-w-lg md:max-w-4xl lg:max-w-5xl bg-white"
           >
             <div className="left bg-black text-white p-4 sm:p-6 lg:p-8 rounded-lg lg:rounded-l-lg w-full lg:w-1/3 md:w-1/3 lg:p-8">
-              <div className="flex justify-center items-center rounded-full bg-slate-100 mb-8 lg:mb-12 border-2 border-slate-100 w-20 h-20 md:w-28 md:h-28 lg:w-48 lg:h-48 md:mx-auto md:my-3 my-6">
+            <div className="flex justify-center items-center lg:mb-12 md:mx-auto md:my-3 ">
                 {imgLink ? (
                   <Image
-                    className="w-full h-full rounded-full object-cover"
+                    className="w-20 h-20 md:w-28 md:h-28 lg:w-48 lg:h-48 rounded-full object-cover border-2 border-slate-100 bg-slate-100 object-cover  hidden md:block lg:block"
                     src={imgLink}
                     alt="profile"
                     width={500}
@@ -643,15 +661,37 @@ const DynamicResume = (): JSX.Element => {
             </div>
 
             <div className="right p-4 sm:p-6 lg:p-8 w-full lg:w-2/3 md:w-2/3 md:p-6">
-              <h2 className="text-center text-xl sm:text-2xl md:text-5xl lg:text-6xl font-bold">
-                {data.nameInp}
-              </h2>
-              <h2
-                className="text-center text-lg sm:text-xl md:text-3xl lg:text-5xl text-purple_col font-bold mt-2 mb-6"
-                style={{ fontFamily: "Dancing Script" }}
-              >
-                {data.professionInp}
-              </h2>
+            <div className="flex justify-center items-center  mb-8 lg:mb-12  md:mx-auto md:my-3 my-6">
+                {imgLink ? (
+                  <Image
+                    className="w-20 h-20 md:w-28 md:h-28 lg:w-48 lg:h-48 rounded-full object-cover border-2 border-slate-100 bg-slate-100 block md:hidden lg:hidden"
+                    src={imgLink}
+                    alt="profile"
+                    width={500}
+                    height={300}
+                    priority
+                  />
+                ) : (
+                  <p className="text-xs sm:text-sm text-center">
+                    Select your Image
+                  </p>
+                )}
+                <div>
+                  <h2 className="text-center text-xl sm:text-2xl md:text-5xl lg:text-6xl font-bold">
+                    {data.nameInp}
+                  </h2>
+                  <h2
+                    className={`text-center text-purple_col text-lg sm:text-xl md:text-3xl lg:text-5xl font-bold mt-2 mb-6`}
+                    style={{
+                      fontFamily: "Dancing Script",
+                     
+                    }}
+                  >
+                    {data.professionInp}
+                  </h2>
+                </div>
+              </div>
+
               <h2 className="text-lg sm:text-xl  font-bold text-purple_col mb-4">
                 Education
               </h2>
