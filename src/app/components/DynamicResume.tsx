@@ -1,6 +1,4 @@
 "use client";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { FaPlus } from "react-icons/fa6";
@@ -193,35 +191,7 @@ const DynamicResume = (): JSX.Element => {
     setExperienceData(filteredData);
   };
 
-  const downloadPDF = (): void => {
-    const content = document.getElementById("content");
-    if (content) {
-      html2canvas(content, {
-        scale: 2,
-      })
-        .then((canvas) => {
-          const imgData = canvas.toDataURL("image/png");
-          const pdf = new jsPDF({
-            orientation: "portrait",
-            unit: "mm",
-            format: [canvas.width * 0.264583, canvas.height * 0.264583],
-          });
 
-          pdf.addImage(
-            imgData,
-            "PNG",
-            0,
-            0,
-            canvas.width * 0.264583,
-            canvas.height * 0.264583
-          );
-          pdf.save("My Resume.pdf");
-        })
-        .catch((error) => {
-          console.error("Error generating PDF: ", error);
-        });
-    }
-  };
 
   const primaryBtn = `bg-gradient-to-r from-blue_col via-purple_col to-pink_col px-4 py-3 rounded-lg text-white`;
   const inpClasses = `border-b-2 border-black px-3 py-4 my-3 focus:outline-none rounded w-full text-sm desktop:text-base`;
@@ -760,8 +730,6 @@ const DynamicResume = (): JSX.Element => {
               )}
             </div>
           </div>
-
-          <button onClick={downloadPDF}>download</button>
         </>
       )}
     </>
